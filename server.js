@@ -11,7 +11,20 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+function getAvailablePort(startPort = 80) {
+    return new Promise((resolve, reject) => {
+        const server = require('net').createServer();
+        server.on('error', () => resolve(getAvailablePort(startPort + 1)));
+        server.listen(startPort, () => {
+            server.close(() => resolve(startPort));
+        });
+    });
+}
+
+getAvailablePort(process.env.PORT || 3000).then(port => {
+    app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+    });
+}).catch(err => {
+    console.error('Failed to start server:', err);
 });

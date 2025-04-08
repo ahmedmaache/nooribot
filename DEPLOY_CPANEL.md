@@ -44,3 +44,6 @@
 - Your app will be available at: http://yourdomain.com/node-app
 - For custom domains/subdomains, configure them in cPanel first
 - Environment variables can be set in the "Setup Node.js App" interface
+- The application defaults to port 80 (HTTP) but will find an available port if needed
+- Note: Port 80 requires root privileges on Linux systems
+- For production, consider using a reverse proxy (like Nginx) on port 80 pointing to your Node app
