@@ -1,0 +1,12 @@
+{
+  "name": "node-input-page",
+  "version": "1.0.0",
+  "description": "A simple page with input and submit button",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
